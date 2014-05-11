@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+    <RelativeLayout
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:paddingRight="10dp"
+        android:paddingLeft="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="#B5B2FF" >
+        
+        <TextView
+            android:textStyle="bold"
+	        android:textSize="20sp"
+	        android:id="@+id/textView1"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text="공연 추가"
+	        android:layout_centerVertical="true" />
+
+        <Button
+            android:id="@+id/btn_add_ok"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="완료"
+            android:layout_alignParentRight="true" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+            
+            <TextView
+        		android:paddingTop="5dp"
+		        android:paddingBottom="5dp"
+		        android:paddingLeft="10dp"
+		        android:textSize="18sp"
+		        android:textStyle="bold"
+		        android:id="@+id/textView2"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:text="공연자 정보" />
+		
+		    <LinearLayout
+		        android:paddingTop="5dp"
+		        android:paddingBottom="5dp"
+		        android:paddingLeft="15dp"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content" >
+		
+		        <ImageView
+		            android:id="@+id/artist_image"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:src="@drawable/arena" />
+		
+	            <EditText
+	                android:layout_gravity="center"
+	                android:layout_marginLeft="10dp"
+	                android:layout_marginRight="10dp"
+	                android:id="@+id/artist_name"
+	                android:hint="공연자 이름"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:ems="10" >
+	            </EditText>
+		    </LinearLayout>
+		
+		    <EditText
+		        android:id="@+id/artist_PR"
+		        android:layout_marginLeft="15dp"
+		        android:layout_marginRight="10dp"
+		        android:layout_marginTop="3dp"
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:ems="10"
+		        android:hint="공연자 소개"
+		        android:inputType="textMultiLine" >
+		    </EditText>
+		
+		    <TextView
+		        android:paddingTop="5dp"
+		        android:paddingBottom="5dp"
+		        android:paddingLeft="10dp"
+		        android:textSize="18sp"
+		        android:textStyle="bold"
+		        android:id="@+id/textView3"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:text="공연 일시" />
+		
+		    <EditText
+		        android:id="@+id/perfor_date"
+		        android:layout_marginLeft="15dp"
+		        android:layout_marginRight="10dp"
+		        android:layout_marginTop="3dp"
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:ems="10"
+		        android:inputType="date"
+		        android:hint="ex) 2014/05/12 14:00" />
+		
+		    <TextView
+		        android:paddingTop="5dp"
+		        android:paddingBottom="5dp"
+		        android:paddingLeft="10dp"
+		        android:textSize="18sp"
+		        android:textStyle="bold"
+		        android:id="@+id/textView4"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:text="공연 장소" />
+		
+		    <Button
+		        android:id="@+id/perfor_place"
+		        android:layout_marginLeft="15dp"
+		        android:layout_marginBottom="8dp"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:text="장소 선택" />
+		
+		    <TextView
+		        android:paddingBottom="5dp"
+		        android:paddingLeft="10dp"
+		        android:textSize="18sp"
+		        android:textStyle="bold"
+		        android:id="@+id/textView5"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:text="공연 정보 수정을 위한 비밀번호 입력" />
+		
+		    <EditText
+		        android:id="@+id/perfor_password"
+		        android:layout_marginLeft="15dp"
+		        android:layout_marginRight="10dp"
+		        android:layout_marginTop="3dp"
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:ems="10"
+		        android:hint="숫자 4자리로 입력   ex) 1234" />
+        
+        </LinearLayout>
+        
+    </ScrollView>
+
+</LinearLayout>
