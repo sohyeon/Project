@@ -29,7 +29,6 @@ import org.mixare.POIMarker;
 import org.mixare.data.DataHandler;
 import org.mixare.data.DataSource;
 import org.mixare.lib.HtmlUnescape;
-import org.mixare.data.convert.DataProcessor;
 import org.mixare.lib.marker.Marker;
 
 import android.util.Log;

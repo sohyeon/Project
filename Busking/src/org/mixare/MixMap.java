@@ -24,8 +24,8 @@ import java.util.List;
 
 import org.mixare.data.DataHandler;
 import org.mixare.data.DataSourceList;
-import org.mixare.lib.marker.Marker;
 import org.mixare.lib.MixUtils;
+import org.mixare.lib.marker.Marker;
 
 import android.app.SearchManager;
 import android.content.Context;

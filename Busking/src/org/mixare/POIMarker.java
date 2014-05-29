@@ -21,7 +21,6 @@ package org.mixare;
 
 import java.text.DecimalFormat;
 
-import org.mixare.LocalMarker;
 import org.mixare.lib.MixUtils;
 import org.mixare.lib.gui.PaintScreen;
 import org.mixare.lib.gui.TextObj;

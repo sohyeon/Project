@@ -19,7 +19,6 @@
 
 package org.mixare;
 
-import org.mixare.LocalMarker;
 import org.mixare.lib.MixUtils;
 import org.mixare.lib.gui.PaintScreen;
 
