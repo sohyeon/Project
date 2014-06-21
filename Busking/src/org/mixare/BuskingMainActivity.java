@@ -29,6 +29,10 @@ public class BuskingMainActivity extends FragmentActivity implements OnMyLocatio
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.busking_main);
+		
+		((Button) findViewById(R.id.load_mixare)).setOnClickListener(mClick);
+		((Button) findViewById(R.id.search_perfor)).setOnClickListener(mClick);
+		((Button) findViewById(R.id.add_perfor)).setOnClickListener(mClick);
 
 		mGoogleMap = ((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.mapview)).getMap();
 		mGoogleMap.moveCamera(CameraUpdateFactory.newCameraPosition(cp));
@@ -36,17 +40,15 @@ public class BuskingMainActivity extends FragmentActivity implements OnMyLocatio
 		// Enabling MyLocation Layer of Google Map
 		mGoogleMap.setMyLocationEnabled(true);
 		// Setting event handler for location change
-		mGoogleMap.setOnMyLocationChangeListener(this);
-
-		((Button) findViewById(R.id.load_mixare)).setOnClickListener(mClick);
-		((Button) findViewById(R.id.search_perfor)).setOnClickListener(mClick);
-		((Button) findViewById(R.id.add_perfor)).setOnClickListener(mClick);
+		mGoogleMap.setOnMyLocationChangeListener(this); //자신의 위치가 변경될 때 마다 OnMyLocationChange를 콜하는 부분
+		
+		//서버에 등록된 공연 정보를 불러와서 마커를 띄워줌.
 	}
 
 	@Override
-	public void onMyLocationChange(Location location) {
+	public void onMyLocationChange(Location location) //내 위치가 변경될 때마다 콜되는 함수
+	{
 		// TODO Auto-generated method stub
-		
 		double latitude = location.getLatitude(); //현재 위도
 		double longitude = location.getLongitude(); //현재 경도
 
