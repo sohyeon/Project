@@ -94,8 +94,7 @@
 		        android:layout_width="match_parent"
 		        android:layout_height="wrap_content"
 		        android:ems="10"
-		        android:inputType="date"
-		        android:hint="ex) 2014/05/12 14:00" />
+		        android:hint="ex) 2014-05-12 14:00" />
 		
 		    <TextView
 		        android:paddingTop="5dp"
