@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:paddingTop="3dp"
+        android:paddingBottom="3dp"
+        android:paddingRight="3dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:background="#B5B2FF" >
+
+        <Button
+            android:id="@+id/select_place_ok"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="공연 장소 선택 완료" />
+    </LinearLayout>
+    
+    <fragment
+        android:id="@+id/addPlace_mapview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:name="com.google.android.gms.maps.SupportMapFragment" />
+
+</LinearLayout>

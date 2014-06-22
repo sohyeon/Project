@@ -63,18 +63,6 @@
                 android:hint="공연자 이름" >
             </EditText>
             
-		    <EditText
-		        android:id="@+id/artist_PR"
-		        android:layout_marginLeft="15dp"
-		        android:layout_marginRight="10dp"
-		        android:layout_marginTop="3dp"
-		        android:layout_width="fill_parent"
-		        android:layout_height="wrap_content"
-		        android:ems="10"
-		        android:hint="공연자 소개"
-		        android:inputType="textMultiLine" >
-		    </EditText>
-		
 		    <TextView
 		        android:paddingTop="5dp"
 		        android:paddingBottom="5dp"
@@ -84,7 +72,7 @@
 		        android:id="@+id/textView3"
 		        android:layout_width="wrap_content"
 		        android:layout_height="wrap_content"
-		        android:text="공연 일시" />
+		        android:text="공연 일시 및 소개" />
 		
 		    <EditText
 		        android:id="@+id/perfor_date"
@@ -95,6 +83,18 @@
 		        android:layout_height="wrap_content"
 		        android:ems="10"
 		        android:hint="ex) 2014-05-12 14:00" />
+		    
+		    <EditText
+		        android:id="@+id/perfor_PR"
+		        android:layout_marginLeft="15dp"
+		        android:layout_marginRight="10dp"
+		        android:layout_marginTop="3dp"
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:ems="10"
+		        android:hint="공연 내용을 소개해주세요"
+		        android:inputType="textMultiLine" >
+		    </EditText>
 		
 		    <TextView
 		        android:paddingTop="5dp"

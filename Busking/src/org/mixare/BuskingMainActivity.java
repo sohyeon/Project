@@ -12,6 +12,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.GoogleMap.OnMyLocationChangeListener;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
@@ -62,7 +63,7 @@ public class BuskingMainActivity extends FragmentActivity implements OnMyLocatio
 		
 		cp = new CameraPosition.Builder().target((loc)).zoom(18).build();
 		mGoogleMap.moveCamera(CameraUpdateFactory.newCameraPosition(cp));
-		marker = new MarkerOptions().position(loc).title("현재위치");
+		marker = new MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.drawable.red_pin)).position(loc).title("현재위치");
 		m = mGoogleMap.addMarker(marker);
 	}
 
@@ -78,8 +79,7 @@ public class BuskingMainActivity extends FragmentActivity implements OnMyLocatio
 				break;
 
 			case R.id.search_perfor:
-				i = new Intent(BuskingMainActivity.this,
-						BuskingSearchPerfor.class);
+				i = new Intent(BuskingMainActivity.this, BuskingSearchPerfor.class);
 				startActivity(i);
 				break;
 

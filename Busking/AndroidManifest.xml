@@ -121,6 +121,11 @@
 		     android:name=".BuskingAddPerfor"
 		     android:screenOrientation="portrait" >
 		     </activity>
+		     
+		 <activity
+		     android:name=".BuskingAddPerforPlace"
+		     android:screenOrientation="portrait" >
+		     </activity>
 		 
 </application>
 
