@@ -33,20 +33,20 @@ public class BuskingAddPerfor extends Activity {
 		btnOK.setOnClickListener(new View.OnClickListener() {
  
             public void onClick(View v) {
-            	
-            	TestAsync ca = new TestAsync();
+            	PerforAsync ca = new PerforAsync();
             	String name = etName.getText().toString();
             	String pr = etPR.getText().toString();
-            	String date = etDate.getText().toString();
+            	String date = etDate.getText().toString().split(" ")[0];
+            	String time = etDate.getText().toString().split(" ")[1];
             	String lat = "37";
             	String lon = "126";
             	
-            	ca.execute(name, pr, date, lat, lon);
+            	ca.execute(name, pr, date, time, lat, lon);
             }
         });
 	}
 	
-	private class TestAsync extends AsyncTask<String, Void, String>
+	private class PerforAsync extends AsyncTask<String, Void, String>
 	{
 		@Override
 		protected String doInBackground(String... strs)
@@ -59,8 +59,9 @@ public class BuskingAddPerfor extends Activity {
 				String param = "name=" + URLEncoder.encode(strs[0], "UTF-8") + "&" +
 				"pr=" + URLEncoder.encode(strs[1], "UTF-8") + "&" +
 				"date=" + URLEncoder.encode(strs[2], "UTF-8") + "&" +
-				"latitude=" + URLEncoder.encode(strs[3], "UTF-8") + "&" +
-				"longitude=" + URLEncoder.encode(strs[4], "UTF-8");
+				"time=" + URLEncoder.encode(strs[3], "UTF-8") + "&" +
+				"latitude=" + URLEncoder.encode(strs[4], "UTF-8") + "&" +
+				"longitude=" + URLEncoder.encode(strs[5], "UTF-8");
 				
 				HttpsURLConnection con = (HttpsURLConnection) url.openConnection();
 				
