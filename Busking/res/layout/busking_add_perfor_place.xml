@@ -18,7 +18,7 @@
             android:id="@+id/select_place_ok"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="공연 장소 선택 완료" />
+            android:text="장소 선택 완료" />
     </LinearLayout>
     
     <fragment

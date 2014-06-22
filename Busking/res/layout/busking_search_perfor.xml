@@ -1,46 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
-    
+
     <RelativeLayout
-        android:paddingTop="5dp"
-        android:paddingBottom="5dp"
-        android:paddingRight="10dp"
-        android:paddingLeft="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="#B5B2FF"
         android:orientation="horizontal"
-        android:background="#B5B2FF" >
-        
+        android:paddingBottom="5dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="5dp" >
+
         <TextView
-            android:textStyle="bold"
-	        android:textSize="20sp"
-	        android:id="@+id/textView1"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:text="공연 검색"
-	        android:layout_centerVertical="true" />
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="공연 검색"
+            android:textSize="20sp"
+            android:textStyle="bold" />
     </RelativeLayout>
 
-    <Button
-        android:id="@+id/search_perfor_artist"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="10dp"
-        android:layout_width="fill_parent"
+    <RadioGroup
+        android:id="@+id/select_search"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="공연자 이름으로 검색" />
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:layout_marginTop="5dp" >
 
-    <Button
-        android:id="@+id/search_perfor_date"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="10dp"
-        android:layout_width="fill_parent"
+        <RadioButton
+            android:id="@+id/radio_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="15dp"
+            android:checked="true"
+            android:text="공연자로 검색" />
+
+        <RadioButton
+            android:id="@+id/radio_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="공연 일시로 검색" />
+    </RadioGroup>
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="공연 일시로 검색" />
-    
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp" >
+
+        <EditText
+            android:id="@+id/et_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10" >
+        </EditText>
+
+        <Button
+            android:id="@+id/btn_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="검색" />
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/perforList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp" >
+    </ListView>
+
 </LinearLayout>
