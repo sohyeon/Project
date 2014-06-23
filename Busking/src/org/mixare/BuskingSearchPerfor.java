@@ -17,11 +17,13 @@ import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserFactory;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -39,6 +41,10 @@ public class BuskingSearchPerfor extends Activity {
 	Button btnSearch;
 	private String BroadURL = "https://lively-ace-618.appspot.com/api";
 	
+	String name = "", date = "", time = "", pr = "", lat = "", lon = "";
+	String tag = "TEMP";
+	String fin_lon = "";
+	
 	@Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,6 +61,22 @@ public class BuskingSearchPerfor extends Activity {
         mReceivedData = new ArrayList<String>();
 		mArrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, mReceivedData);
 		mListView.setAdapter(mArrayAdapter);
+		
+		mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() { //단클릭
+    		@Override
+    		public void onItemClick(AdapterView<?> parent, View view, int position, long id)
+    		{
+    			//Log.d("test", position+"");
+				//Log.d("test", m_data.get(position).get_name());
+				Intent i = new Intent(BuskingSearchPerfor.this, BuskingDetailPerfor.class);
+				i.putExtra("name", name);
+				i.putExtra("dateandtime", date+" "+time);
+				i.putExtra("pr", pr);
+				i.putExtra("lat", lat);
+				i.putExtra("lon", fin_lon);
+				startActivity(i);
+    		}
+		});
 	}
 	
 	Button.OnClickListener mClick = new OnClickListener() {
@@ -62,7 +84,8 @@ public class BuskingSearchPerfor extends Activity {
 		public void onClick(View v) {
 			switch (v.getId()) {
 			case R.id.btn_search:
-				mArrayAdapter.clear();
+				//mArrayAdapter.clear();
+				
 				MyAsyncTask myAsyncTask = new MyAsyncTask();
 				myAsyncTask.execute(BroadURL);
 				break;
@@ -73,6 +96,7 @@ public class BuskingSearchPerfor extends Activity {
 	private class MyAsyncTask extends AsyncTask<String, Void, String> {
 
 		private String mDataRespone = null;
+		
 
 		@Override
 		protected void onPreExecute() {
@@ -82,12 +106,11 @@ public class BuskingSearchPerfor extends Activity {
 		@Override
 		protected String doInBackground(String... params) {
 			try {
-				Log.e("www" , "qweqweqwe");
-				
 				HttpClient client = new DefaultHttpClient();
 				String getURL = params[0].toString();
 				
 				List<NameValuePair> myparam = new ArrayList<NameValuePair>();
+				
 				
 				if(rbName.isChecked())
 				{
@@ -103,17 +126,14 @@ public class BuskingSearchPerfor extends Activity {
 				String paramString = URLEncodedUtils.format(myparam, "utf-8");
 				
 				HttpGet get = new HttpGet(getURL+"?"+paramString);
-				Log.e("www", get.getURI().toURL().toString());
+				//Log.e("www", get.getURI().toURL().toString());
 				
 				HttpResponse responseGet = client.execute(get);
 				HttpEntity resEntityGet = responseGet.getEntity();
 				if (resEntityGet != null) {
 					mDataRespone = EntityUtils.toString(resEntityGet);
-					Log.e("www" , mDataRespone);
+					Log.d("www" , mDataRespone);
 				}
-				
-				String name = "", date = "";
-				String tag = "TEMP";
 				
 				// xml parsing
 				XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
@@ -132,7 +152,11 @@ public class BuskingSearchPerfor extends Activity {
 						String _tag = xpp.getName();
 						System.out.println("End tag " + _tag);
 						if (_tag.equalsIgnoreCase("document"))
+						{
 							mReceivedData.add(name + " / " + date);
+							Log.d("test", "여기");
+							fin_lon = lon;
+						}
 
 					} else if (eventType == XmlPullParser.TEXT) {
 						System.out.println("Text " + xpp.getText());
@@ -141,10 +165,20 @@ public class BuskingSearchPerfor extends Activity {
 							name = new String(xpp.getText().getBytes("UTF-8"));
 						else if (tag.equalsIgnoreCase("date"))
 							date = new String(xpp.getText().getBytes("UTF-8"));
-						/*else if (tag.equalsIgnoreCase("id"))
-							//id = xpp.getText();*/
-
-					}
+						else if (tag.equalsIgnoreCase("time"))
+							time = new String(xpp.getText().getBytes("UTF-8"));
+						else if (tag.equalsIgnoreCase("pr"))
+							pr = new String(xpp.getText().getBytes("UTF-8"));
+						else if (tag.equalsIgnoreCase("lat"))
+						{
+							lat = new String(xpp.getText().getBytes("UTF-8"));
+							Log.d("long", "lat : "+lat);
+						}
+						else if (tag.equalsIgnoreCase("lon")){
+							lon = new String(xpp.getText().getBytes("UTF-8"));
+							Log.d("long", "lon : "+lon);
+						}
+					} 
 					eventType = xpp.next();
 				}
 			}
